@@ -32,6 +32,12 @@ export class Home implements OnInit {
 
   onSubmit(forum: forumPost) {
     console.log('Form Submitted', forum);
+    forum.userId = 1;
+    forum.id = this.forums.length + 1;
+    this.forumService.addForum(forum).subscribe(newForum =>{
+      this.forums.unshift(newForum);
+      console.log('New forum added:', newForum);
+    })
   }
 
 }
